@@ -5,6 +5,9 @@ import { loadInitUsuarios } from "./database/initUsuarios.js";
 import { loadInitResenia } from "./database/initResenia.js";
 import { configurarRelaciones } from "./models/relations.js";
 import "./models/VideoJuego.js";
+import "./models/Resenia.js";
+import "./models/Usuario.js";
+import "./models/relations.js";
 
 async function intit() {
   try {
