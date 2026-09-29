@@ -2,6 +2,7 @@ import app from "./app.js";
 import { sequalize } from "./database/database.js";
 import { loadInitVideoJuegos } from "./database/initVideoJuego.js";
 import { loadInitUsuarios } from "./database/initUsuarios.js";
+import { loadInitResenia } from "./database/initResenia.js";
 import "./models/VideoJuego.js";
 
 async function intit() {
@@ -20,6 +21,8 @@ async function intit() {
     await loadInitVideoJuegos();
 
     await loadInitUsuarios();
+
+    await loadInitResenia();
 
     app.listen(3000, () => {
       console.log("serever on port 3000");
