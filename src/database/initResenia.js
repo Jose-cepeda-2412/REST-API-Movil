@@ -98,10 +98,16 @@ const initResenia = [
 ];
 
 export async function loadInitResenia() {
-  //contar cuantos datos hay en la BD, si esta vacio ingresar los usuarios
-  const count = await Resenia.count();
-  if (count == 0) {
-    await Resenia.bulkCreate(initResenia);
-    console.log("Reseñas cargadas a BD");
+  try {
+    //contar cuantos datos hay en la BD, si esta vacio ingresar los usuarios
+    const count = await Resenia.count();
+    if (count == 0) {
+      await Resenia.bulkCreate(initResenia);
+      console.log("Reseñas cargadas a BD");
+    } else {
+      console.log("Ya hay reseñas en la BD");
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

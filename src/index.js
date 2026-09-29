@@ -3,6 +3,7 @@ import { sequalize } from "./database/database.js";
 import { loadInitVideoJuegos } from "./database/initVideoJuego.js";
 import { loadInitUsuarios } from "./database/initUsuarios.js";
 import { loadInitResenia } from "./database/initResenia.js";
+import { configurarRelaciones } from "./models/relations.js";
 import "./models/VideoJuego.js";
 
 async function intit() {
@@ -18,9 +19,11 @@ async function intit() {
 
     await sequalize.sync({ force: true }); //crear tablas
 
-    await loadInitVideoJuegos();
+    configurarRelaciones();
 
     await loadInitUsuarios();
+
+    await loadInitVideoJuegos();
 
     await loadInitResenia();
 

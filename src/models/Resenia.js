@@ -27,7 +27,7 @@ export const Resenia = sequalize.define("reseña", {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
-      min: 1,
+      min: 0,
       max: 5,
     },
   },
