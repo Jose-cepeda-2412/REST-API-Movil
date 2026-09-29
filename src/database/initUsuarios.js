@@ -58,10 +58,14 @@ const initUsuarios = [
 ];
 
 export async function loadInitUsuarios() {
-  //contar cuantos datos hay en la BD, si esta vacio ingresar los usuarios
-  const count = await Usuario.count();
-  if (count == 0) {
-    await Usuario.bulkCreate(initUsuarios);
-    console.log("Usuarios cargados a BD");
+  try {
+    //contar cuantos datos hay en la BD, si esta vacio ingresar los usuarios
+    const count = await Usuario.count();
+    if (count == 0) {
+      await Usuario.bulkCreate(initUsuarios);
+      console.log("Usuarios cargados a BD");
+    }
+  } catch (error) {
+    console.log(error);
   }
 }

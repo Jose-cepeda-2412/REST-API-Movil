@@ -186,10 +186,14 @@ const InitVideoJuegos = [
 
 //funcion para guardar en la BD, es asincrona porque debe ir a la BD y devolver la respuesta si pudo inizialira la BD
 export async function loadInitVideoJuegos() {
-  //contar cuantos datos hay en la BD, si esta vacio ingresar los juegos
-  const count = await VideoJuego.count();
-  if (count == 0) {
-    await VideoJuego.bulkCreate(InitVideoJuegos);
-    console.log("videoJuegos cargados a BD");
+  try {
+    //contar cuantos datos hay en la BD, si esta vacio ingresar los juegos
+    const count = await VideoJuego.count();
+    if (count == 0) {
+      await VideoJuego.bulkCreate(InitVideoJuegos);
+      console.log("videoJuegos cargados a BD");
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
