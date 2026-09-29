@@ -1,5 +1,7 @@
 import app from "./app.js";
 import { sequalize } from "./database/database.js";
+import { loadInitVideoJuegos } from "./database/initVideoJuego.js";
+import "./models/VideoJuego.js";
 
 async function intit() {
   try {
@@ -11,6 +13,10 @@ async function intit() {
       .catch(() => {
         console.log("Error al realizar la conexion a la BD", err);
       });
+
+    await sequalize.sync({ force: true }); //crear tablas
+
+    await loadInitVideoJuegos();
 
     app.listen(3000, () => {
       console.log("serever on port 3000");
