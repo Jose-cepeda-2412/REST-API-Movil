@@ -1,5 +1,23 @@
 import { Resenia } from "../models/Resenia.js";
 
+//crear reseña con id de usuario, videojuego e información de la reseña
+export const postCrearResenia = async (req, res) => {
+  try {
+    const idUsuario = req.params.idUsuario;
+    const idVideoJuego = req.params.idVideoJuego;
+    const newResenia = await Resenia.create({
+      calificacion: req.body.calificacion,
+      fechaResenia: req.body.fechaResenia,
+      contenido: req.body.contenido,
+      idUsuario: idUsuario,
+      idVideoJuego: idVideoJuego,
+    });
+    return res.json(newResenia);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 export const getReviewsVideoJuegosId = async (req, res) => {
   const id = req.params.id;
   try {

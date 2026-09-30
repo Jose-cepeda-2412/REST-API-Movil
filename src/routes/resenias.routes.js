@@ -4,6 +4,7 @@ import {
   modificarReview,
   getReviewsUserId,
   getReviewsVideoJuegosId,
+  postCrearResenia,
 } from "../controller/resenia.controller.js";
 
 const router = Router();
@@ -11,6 +12,11 @@ const router = Router();
 //CRUD para reseñas
 
 //Tener la consulta que permite crear un review, dado un id de usuario, id de videojuego, y la información de un review
+// localhost:3000/resenia/usuario/:idUsuario/videoJuego/:idVideojuego
+router.post(
+  "/resenia/usuario/:idUsuario/videoJuego/:idVideoJuego",
+  postCrearResenia,
+);
 
 //Tener la consulta que permite traer todos los review de un videojuego, de acuerdo a su id.
 //localhost:3000/resenia/videoJuego/:id
