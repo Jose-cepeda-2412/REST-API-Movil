@@ -1,6 +1,9 @@
 import { Router } from "express";
-import { eliminarReviewId } from "../controller/resenia.controller.js";
-import { modificarReview } from "../controller/resenia.controller.js";
+import {
+  eliminarReviewId,
+  modificarReview,
+  getReviewsUserId,
+} from "../controller/resenia.controller.js";
 
 const router = Router();
 
@@ -11,7 +14,8 @@ const router = Router();
 //Tener la consulta que permite traer todos los review de un videojuego, de acuerdo a su id.
 
 //Tener una consulta que permita traer todos los reviews dado un id de usuario.
-
+//localhost:3000/resenia/usuario/:id
+router.get("/resenia/usuario/:id", getReviewsUserId);
 //Tener la consulta que permite eliminar un review por su id.
 //localhost:3000/resenia/:id
 router.delete("/resenia/:id", eliminarReviewId);
