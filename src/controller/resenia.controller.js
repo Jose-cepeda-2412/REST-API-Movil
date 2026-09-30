@@ -1,5 +1,22 @@
 import { Resenia } from "../models/Resenia.js";
 
+export const getReviewsVideoJuegosId = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const resenia = await Resenia.findAll({
+      where: {
+        idVideoJuego: id,
+      },
+    });
+    if (resenia === 0) {
+      return res.status(404).json({ error: "reseña no encontrada" });
+    }
+    return res.json(resenia);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
 export const getReviewsUserId = async (req, res) => {
   const id = req.params.id;
   try {
