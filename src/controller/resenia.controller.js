@@ -1,10 +1,23 @@
 import { Resenia } from "../models/Resenia.js";
-
+import { Usuario } from "../models/Usuario.js";
+import { VideoJuego } from "../models/VideoJuego.js";
 //crear reseña con id de usuario, videojuego e información de la reseña
 export const postCrearResenia = async (req, res) => {
   try {
     const idUsuario = req.params.idUsuario;
     const idVideoJuego = req.params.idVideoJuego;
+
+    const usuario = await Usuario.findByPk(idUsuario);
+    const videoJuego = await VideoJuego.findByPk(idVideoJuego);
+
+    if (!usuario) {
+      return res.status(404).json({ error: "usuario no encontrado" });
+    }
+
+    if (!videoJuego) {
+      return res.status(404).json({ error: "videoJuego no encontrado" });
+    }
+
     const newResenia = await Resenia.create({
       calificacion: req.body.calificacion,
       fechaResenia: req.body.fechaResenia,
