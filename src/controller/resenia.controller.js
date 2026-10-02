@@ -13,7 +13,7 @@ export const postCrearResenia = async (req, res) => {
     const usuario = await Usuario.findByPk(idUsuario);
     const videoJuego = await VideoJuego.findByPk(idVideoJuego);
 
-    if (!usuario) {
+    if (!usuaripo) {
       return res.status(404).json({ error: "usuario no encontrado" });
     }
 
