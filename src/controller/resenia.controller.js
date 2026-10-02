@@ -6,6 +6,9 @@ export const postCrearResenia = async (req, res) => {
   try {
     const idUsuario = req.params.idUsuario;
     const idVideoJuego = req.params.idVideoJuego;
+    const calificacion = req.body.calificacion;
+    const contenido = req.body.contenido;
+    const fechaResenia = new Date();
 
     const usuario = await Usuario.findByPk(idUsuario);
     const videoJuego = await VideoJuego.findByPk(idVideoJuego);
@@ -18,10 +21,40 @@ export const postCrearResenia = async (req, res) => {
       return res.status(404).json({ error: "videoJuego no encontrado" });
     }
 
+    if (
+      typeof calificacion !== "number" ||
+      calificacion < 0 ||
+      calificacion > 5
+    ) {
+      return res
+        .status(400)
+        .json({ error: "calificación debe estar entre 0 y 5" });
+    }
+
+    if (typeof contenido !== "string" || contenido.length === 0) {
+      return res.status(400).json({
+        error: "el contenido de la reseña debe tener al menos un caracter",
+      });
+    }
+
+    //verificar que un usuario tenga UNA sola reseña por videoJuego
+    const reseniaExistente = await Resenia.findOne({
+      where: {
+        idUsuario: idUsuario,
+        idVideoJuego: idVideoJuego,
+      },
+    });
+
+    if (reseniaExistente) {
+      return res
+        .status(400)
+        .json({ error: "el usuario ya tiene una reseña para ese videojuego" });
+    }
+
     const newResenia = await Resenia.create({
-      calificacion: req.body.calificacion,
-      fechaResenia: req.body.fechaResenia,
-      contenido: req.body.contenido,
+      calificacion: calificacion,
+      fechaResenia: fechaResenia,
+      contenido: contenido,
       idUsuario: idUsuario,
       idVideoJuego: idVideoJuego,
     });
