@@ -1,7 +1,12 @@
 import { Sequelize } from "sequelize";
 
-export const sequalize = new Sequelize("VoxelReview", "postgres", "Jose2412", {
-  port: 5432,
-  host: "localhost",
-  dialect: "postgres",
-});
+export const sequalize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    port: 5432,
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+  },
+);

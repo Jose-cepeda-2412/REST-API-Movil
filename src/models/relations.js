@@ -1,6 +1,7 @@
 import { Usuario } from "./Usuario.js";
 import { Resenia } from "./Resenia.js";
 import { VideoJuego } from "./VideoJuego.js";
+import { Seguidores } from "./Seguidores.js";
 export function configurarRelaciones() {
   //usuario 1-----N reseñas
   Usuario.hasMany(Resenia, {
@@ -27,5 +28,19 @@ export function configurarRelaciones() {
     as: "resenias",
     onDelete: "cascade",
     hooks: true, //cuasndo se realice cierta accion se ejecute otra accion de manera automatica
+  });
+
+  Usuario.belongsToMany(Usuario, {
+    through: Seguidores,
+    foreignKey: "idUsuarioSeguidor",
+    otherKey: "idUsuarioSeguido",
+    as: "followers",
+  });
+
+  Usuario.belongsToMany(Usuario, {
+    through: Seguidores,
+    as: "following",
+    foreignKey: "idUsuarioSeguido",
+    otherKey: "idUsuarioSeguidor",
   });
 }

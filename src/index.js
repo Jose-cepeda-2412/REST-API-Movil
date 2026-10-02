@@ -16,8 +16,8 @@ async function intit() {
       .then(() => {
         console.log("conexion exitosa a la BD");
       })
-      .catch(() => {
-        console.log("Error al realizar la conexion a la BD", err);
+      .catch((error) => {
+        console.log("Error al realizar la conexion a la BD", error);
       });
 
     await sequalize.sync({ force: true }); //crear tablas
@@ -31,7 +31,7 @@ async function intit() {
     await loadInitResenia();
 
     app.listen(3000, () => {
-      console.log("serever on port 3000");
+      console.log("server on port 3000");
     });
   } catch (error) {
     console.log(error);
