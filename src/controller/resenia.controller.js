@@ -43,10 +43,7 @@ export const getReviewsVideoJuegosId = async (req, res) => {
         idVideoJuego: id,
       },
     });
-    if (resenia.length === 0) {
-      return res.status(404).json({ error: "reseña no encontrada" });
-    }
-    return res.json(resenia);
+    return res.status(200).json(resenia);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -64,10 +61,7 @@ export const getReviewsUserId = async (req, res) => {
         idUsuario: id,
       },
     });
-    if (resenia.length === 0) {
-      return res.status(404).json({ error: "reseña no encontrada" });
-    }
-    return res.json(resenia);
+    return res.status(200).json(resenia);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
