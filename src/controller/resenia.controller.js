@@ -25,25 +25,25 @@ export const postCrearResenia = async (req, res) => {
       idUsuario: idUsuario,
       idVideoJuego: idVideoJuego,
     });
-    return res.json(newResenia);
+    return res.status(201).json(newResenia);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 };
 
 export const getReviewsVideoJuegosId = async (req, res) => {
-  const id = req.params.id;
-  const videoJuego = await VideoJuego.findByPk(id);
-  if (!videoJuego) {
-    return res.status(404).json({ error: "videojuego no encontrado" });
-  }
   try {
+    const id = req.params.id;
+    const videoJuego = await VideoJuego.findByPk(id);
+    if (!videoJuego) {
+      return res.status(404).json({ error: "videojuego no encontrado" });
+    }
     const resenia = await Resenia.findAll({
       where: {
         idVideoJuego: id,
       },
     });
-    if (resenia === 0) {
+    if (resenia.length === 0) {
       return res.status(404).json({ error: "reseña no encontrada" });
     }
     return res.json(resenia);
@@ -53,8 +53,12 @@ export const getReviewsVideoJuegosId = async (req, res) => {
 };
 
 export const getReviewsUserId = async (req, res) => {
-  const id = req.params.id;
   try {
+    const id = req.params.id;
+    const usuario = await Usuario.findByPk(id);
+    if (!usuario) {
+      return res.status(404).json({ error: "usuario no encontrado" });
+    }
     const resenia = await Resenia.findAll({
       where: {
         idUsuario: id,
@@ -74,8 +78,11 @@ export const eliminarReviewId = async (req, res) => {
   try {
     const id = req.params.id;
     const resenia = await Resenia.findByPk(id);
+    if (!resenia) {
+      return res.status(404).json({ error: "reseña no encontrada" });
+    }
     await resenia.destroy();
-    return res.status(204);
+    return res.status(204).send();
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
