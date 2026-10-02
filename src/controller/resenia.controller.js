@@ -33,6 +33,10 @@ export const postCrearResenia = async (req, res) => {
 
 export const getReviewsVideoJuegosId = async (req, res) => {
   const id = req.params.id;
+  const videoJuego = await VideoJuego.findByPk(id);
+  if (!videoJuego) {
+    return res.status(404).json({ error: "videojuego no encontrado" });
+  }
   try {
     const resenia = await Resenia.findAll({
       where: {
