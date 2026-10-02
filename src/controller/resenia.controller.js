@@ -120,13 +120,34 @@ export const modificarReview = async (req, res) => {
   try {
     const id = req.params.id;
     const resenia = await Resenia.findByPk(id);
+    const calificacion = req.body.calificacion;
+    const contenido = req.body.contenido;
 
     //verificar que existe
     if (!resenia) {
       return res.status(404).json({ error: "reseña no encontrada" });
     }
 
-    await resenia.update(req.body);
+    if (
+      typeof calificacion !== "number" ||
+      calificacion < 0 ||
+      calificacion > 5
+    ) {
+      return res
+        .status(400)
+        .json({ error: "calificación debe estar entre 0 y 5" });
+    }
+
+    if (typeof contenido !== "string" || contenido.length === 0) {
+      return res.status(400).json({
+        error: "el contenido de la reseña debe tener al menos un caracter",
+      });
+    }
+
+    await resenia.update({
+      calificacion: calificacion,
+      contenido: contenido,
+    });
     return res.json(resenia);
   } catch (error) {
     return res.status(500).json({ error: error.message });
