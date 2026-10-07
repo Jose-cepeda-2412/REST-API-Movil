@@ -23,7 +23,7 @@ export const Resenia = sequalize.define("reseña", {
       key: "idVideoJuego",
     },
   },
-  calificacion: {
+  ratingJugabilidad: {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
@@ -31,9 +31,21 @@ export const Resenia = sequalize.define("reseña", {
       max: 5,
     },
   },
-  fechaResenia: {
-    type: DataTypes.DATEONLY,
+  ratingGraficos: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+    validate: {
+      min: 0,
+      max: 5,
+    },
+  },
+  ratingHistoria: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    validate: {
+      min: 0,
+      max: 5,
+    },
   },
   contenido: {
     type: DataTypes.STRING,

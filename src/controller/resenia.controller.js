@@ -1,19 +1,33 @@
 import { Resenia } from "../models/Resenia.js";
 import { Usuario } from "../models/Usuario.js";
 import { VideoJuego } from "../models/VideoJuego.js";
+
+//validar que los ratings sean enteros entre 0 y 5
+const validarRatings = (body) => {
+  const ratings = [
+    body.ratingJugabilidad,
+    body.ratingGraficos,
+    body.ratingHistoria,
+  ];
+  return ratings.every(
+    (rating) => Number.isInteger(rating) && rating >= 0 && rating <= 5
+  );
+};
+
 //crear reseña con id de usuario, videojuego e información de la reseña
 export const postCrearResenia = async (req, res) => {
   try {
     const idUsuario = req.params.idUsuario;
     const idVideoJuego = req.params.idVideoJuego;
-    const calificacion = req.body.calificacion;
+    const ratingJugabilidad = req.body.ratingJugabilidad;
+    const ratingGraficos = req.body.ratingGraficos;
+    const ratingHistoria = req.body.ratingHistoria;
     const contenido = req.body.contenido;
-    const fechaResenia = new Date();
 
     const usuario = await Usuario.findByPk(idUsuario);
     const videoJuego = await VideoJuego.findByPk(idVideoJuego);
 
-    if (!usuaripo) {
+    if (!usuario) {
       return res.status(404).json({ error: "usuario no encontrado" });
     }
 
@@ -21,14 +35,11 @@ export const postCrearResenia = async (req, res) => {
       return res.status(404).json({ error: "videoJuego no encontrado" });
     }
 
-    if (
-      typeof calificacion !== "number" ||
-      calificacion < 0 ||
-      calificacion > 5
-    ) {
-      return res
-        .status(400)
-        .json({ error: "calificación debe estar entre 0 y 5" });
+    if (!validarRatings(req.body)) {
+      return res.status(400).json({
+        error:
+          "ratingJugabilidad, ratingGraficos y ratingHistoria deben ser enteros entre 0 y 5",
+      });
     }
 
     if (typeof contenido !== "string" || contenido.length === 0) {
@@ -52,8 +63,9 @@ export const postCrearResenia = async (req, res) => {
     }
 
     const newResenia = await Resenia.create({
-      calificacion: calificacion,
-      fechaResenia: fechaResenia,
+      ratingJugabilidad: ratingJugabilidad,
+      ratingGraficos: ratingGraficos,
+      ratingHistoria: ratingHistoria,
       contenido: contenido,
       idUsuario: idUsuario,
       idVideoJuego: idVideoJuego,
@@ -75,6 +87,18 @@ export const getReviewsVideoJuegosId = async (req, res) => {
       where: {
         idVideoJuego: id,
       },
+      include: [
+        {
+          model: Usuario,
+          as: "usuario",
+          attributes: ["nombreUsuario", "fotoUrl"],
+        },
+        {
+          model: VideoJuego,
+          as: "videoJuego",
+          attributes: ["nombre", "imageUrl", "desarrollador"],
+        },
+      ],
     });
     return res.status(200).json(resenia);
   } catch (error) {
@@ -93,6 +117,18 @@ export const getReviewsUserId = async (req, res) => {
       where: {
         idUsuario: id,
       },
+      include: [
+        {
+          model: Usuario,
+          as: "usuario",
+          attributes: ["nombreUsuario", "fotoUrl"],
+        },
+        {
+          model: VideoJuego,
+          as: "videoJuego",
+          attributes: ["nombre", "imageUrl", "desarrollador"],
+        },
+      ],
     });
     return res.status(200).json(resenia);
   } catch (error) {
@@ -120,7 +156,9 @@ export const modificarReview = async (req, res) => {
   try {
     const id = req.params.id;
     const resenia = await Resenia.findByPk(id);
-    const calificacion = req.body.calificacion;
+    const ratingJugabilidad = req.body.ratingJugabilidad;
+    const ratingGraficos = req.body.ratingGraficos;
+    const ratingHistoria = req.body.ratingHistoria;
     const contenido = req.body.contenido;
 
     //verificar que existe
@@ -128,14 +166,11 @@ export const modificarReview = async (req, res) => {
       return res.status(404).json({ error: "reseña no encontrada" });
     }
 
-    if (
-      typeof calificacion !== "number" ||
-      calificacion < 0 ||
-      calificacion > 5
-    ) {
-      return res
-        .status(400)
-        .json({ error: "calificación debe estar entre 0 y 5" });
+    if (!validarRatings(req.body)) {
+      return res.status(400).json({
+        error:
+          "ratingJugabilidad, ratingGraficos y ratingHistoria deben ser enteros entre 0 y 5",
+      });
     }
 
     if (typeof contenido !== "string" || contenido.length === 0) {
@@ -145,7 +180,9 @@ export const modificarReview = async (req, res) => {
     }
 
     await resenia.update({
-      calificacion: calificacion,
+      ratingJugabilidad: ratingJugabilidad,
+      ratingGraficos: ratingGraficos,
+      ratingHistoria: ratingHistoria,
       contenido: contenido,
     });
     return res.json(resenia);
