@@ -1,46 +1,46 @@
-import { Usuario } from "./Usuario.js";
-import { Resenia } from "./Resenia.js";
-import { VideoJuego } from "./VideoJuego.js";
-import { Seguidores } from "./Seguidores.js";
-export function configurarRelaciones() {
+import { User } from "./User.js";
+import { Review } from "./Review.js";
+import { VideoGame } from "./VideoGame.js";
+import { Follow } from "./Follow.js";
+export function setupAssociations() {
   //usuario 1-----N reseñas
-  Usuario.hasMany(Resenia, {
-    foreignKey: "idUsuario",
-    as: "resenias", //para hacer la consulta usuario.getResenias()
+  User.hasMany(Review, {
+    foreignKey: "userId",
+    as: "reviews", //para hacer la consulta user.getReviews()
     onDelete: "cascade",
     hooks: true, //cuasndo se realice cierta accion se ejecute otra accion de manera automatica
   });
 
-  Resenia.belongsTo(Usuario, {
-    foreignKey: "idUsuario",
-    as: "usuario", //para poder hacer resenia.getUsuario()
+  Review.belongsTo(User, {
+    foreignKey: "userId",
+    as: "user", //para poder hacer review.getUser()
   });
 
   //reseñas N----- 1 videojuego
 
-  Resenia.belongsTo(VideoJuego, {
-    foreignKey: "idVideoJuego",
-    as: "videoJuego",
+  Review.belongsTo(VideoGame, {
+    foreignKey: "videoGameId",
+    as: "videoGame",
   });
 
-  VideoJuego.hasMany(Resenia, {
-    foreignKey: "idVideoJuego",
-    as: "resenias",
+  VideoGame.hasMany(Review, {
+    foreignKey: "videoGameId",
+    as: "reviews",
     onDelete: "cascade",
     hooks: true, //cuasndo se realice cierta accion se ejecute otra accion de manera automatica
   });
 
-  Usuario.belongsToMany(Usuario, {
-    through: Seguidores,
-    foreignKey: "idUsuarioSeguidor",
-    otherKey: "idUsuarioSeguido",
+  User.belongsToMany(User, {
+    through: Follow,
+    foreignKey: "followerId",
+    otherKey: "followedId",
     as: "followers",
   });
 
-  Usuario.belongsToMany(Usuario, {
-    through: Seguidores,
+  User.belongsToMany(User, {
+    through: Follow,
     as: "following",
-    foreignKey: "idUsuarioSeguido",
-    otherKey: "idUsuarioSeguidor",
+    foreignKey: "followedId",
+    otherKey: "followerId",
   });
 }

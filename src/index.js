@@ -1,17 +1,17 @@
 import app from "./app.js";
-import { sequalize } from "./database/database.js";
-import { loadInitVideoJuegos } from "./database/initVideoJuego.js";
-import { loadInitUsuarios } from "./database/initUsuarios.js";
-import { loadInitResenia } from "./database/initResenia.js";
-import { configurarRelaciones } from "./models/relations.js";
-import "./models/VideoJuego.js";
-import "./models/Resenia.js";
-import "./models/Usuario.js";
+import { sequelize } from "./database/database.js";
+import { loadInitVideoGames } from "./database/initVideoGames.js";
+import { loadInitUsers } from "./database/initUsers.js";
+import { loadInitReviews } from "./database/initReviews.js";
+import { setupAssociations } from "./models/relations.js";
+import "./models/VideoGame.js";
+import "./models/Review.js";
+import "./models/User.js";
 import "./models/relations.js";
 
-async function intit() {
+async function init() {
   try {
-    await sequalize
+    await sequelize
       .authenticate()
       .then(() => {
         console.log("conexion exitosa a la BD");
@@ -20,15 +20,15 @@ async function intit() {
         console.log("Error al realizar la conexion a la BD", error);
       });
 
-    await sequalize.sync({ force: true }); //crear tablas
+    await sequelize.sync({ force: true }); //crear tablas
 
-    configurarRelaciones();
+    setupAssociations();
 
-    await loadInitUsuarios();
+    await loadInitUsers();
 
-    await loadInitVideoJuegos();
+    await loadInitVideoGames();
 
-    await loadInitResenia();
+    await loadInitReviews();
 
     app.listen(3000, () => {
       console.log("server on port 3000");
@@ -38,4 +38,4 @@ async function intit() {
   }
 }
 
-intit();
+init();

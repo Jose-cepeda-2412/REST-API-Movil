@@ -1,14 +1,14 @@
 import express from "express";
-import usuarioRoutes from "./routes/usuarios.routes.js";
-import videoJuegosRoutes from "./routes/videoJuegos.routes.js";
-import reseniasRoutes from "./routes/resenias.routes.js";
+import userRoutes from "./routes/users.routes.js";
+import videoGameRoutes from "./routes/videoGames.routes.js";
+import reviewRoutes from "./routes/reviews.routes.js";
 
 const app = express();
 
 app.use(express.json());
 
-app.use(usuarioRoutes);
-app.use(videoJuegosRoutes);
-app.use(reseniasRoutes);
+app.use(userRoutes);
+app.use(videoGameRoutes);
+app.use(reviewRoutes);
 
 export default app;
