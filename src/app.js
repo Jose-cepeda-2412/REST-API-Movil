@@ -7,6 +7,12 @@ const app = express();
 
 app.use(express.json());
 
+//log de peticiones para depurar desde la app móvil
+app.use((req, _res, next) => {
+  console.log(`[API] ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 app.use(userRoutes);
 app.use(videoGameRoutes);
 app.use(reviewRoutes);

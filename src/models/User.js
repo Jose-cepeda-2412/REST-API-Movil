@@ -28,10 +28,6 @@ export const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: true,
   },
-  registrationDate: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
-  },
   photoUrl: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -40,5 +36,20 @@ export const User = sequelize.define("user", {
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: true,
+  },
+  numReviews: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+  likes: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+  avgRating: {
+    type: DataTypes.FLOAT,
+    allowNull: false,
+    defaultValue: 0.0,
   },
 });
