@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getUserById } from "../controller/user.controller.js";
+import { getAllUsers, getUserById } from "../controller/user.controller.js";
 
 const router = Router();
 
@@ -7,4 +7,5 @@ const router = Router();
 //localhost:3000/users/:id
 router.get("/users/:id", getUserById);
 
+router.get("/users/", getAllUsers);
 export default router;

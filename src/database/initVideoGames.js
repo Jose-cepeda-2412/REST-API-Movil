@@ -9,7 +9,8 @@ const initVideoGames = [
     developer: "Bethesda Game Studios",
     platform: "Multiplataforma",
     releaseDate: "2023-09-06",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl:
+      "https://sm.ign.com/ign_nordic/cover/s/starfield/starfield_dzsh.jpg",
   },
   {
     name: "Elden Ring",
@@ -27,7 +28,7 @@ const initVideoGames = [
     developer: "CD Projekt Red",
     platform: "Multiplataforma",
     releaseDate: "2020-12-10",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://i.redd.it/p99esbve7sf81.jpg",
   },
   {
     name: "The Last of Us Part II",

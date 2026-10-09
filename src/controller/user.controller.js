@@ -10,3 +10,13 @@ export const getUserById = async (req, rep) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+//Retornar todos los usuarios
+export const getAllUsers = async (req, rep) => {
+  try {
+    const user = await User.findAll();
+    return rep.json(user);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
