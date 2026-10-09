@@ -9,8 +9,7 @@ const initVideoGames = [
     developer: "Bethesda Game Studios",
     platform: "Multiplataforma",
     releaseDate: "2023-09-06",
-    imageUrl:
-      "https://sm.ign.com/ign_nordic/cover/s/starfield/starfield_dzsh.jpg",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1716740/library_600x900.jpg",
   },
   {
     name: "Elden Ring",
@@ -19,7 +18,7 @@ const initVideoGames = [
     developer: "FromSoftware",
     platform: "Multiplataforma",
     releaseDate: "2022-02-25",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1245620/library_600x900.jpg",
   },
   {
     name: "Cyberpunk 2077",
@@ -28,7 +27,7 @@ const initVideoGames = [
     developer: "CD Projekt Red",
     platform: "Multiplataforma",
     releaseDate: "2020-12-10",
-    imageUrl: "https://i.redd.it/p99esbve7sf81.jpg",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1091500/library_600x900.jpg",
   },
   {
     name: "The Last of Us Part II",
@@ -37,7 +36,7 @@ const initVideoGames = [
     developer: "Naughty Dog",
     platform: "Multiplataforma",
     releaseDate: "2020-06-19",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/2531310/library_600x900.jpg",
   },
   {
     name: "Baldur's Gate 3",
@@ -46,7 +45,7 @@ const initVideoGames = [
     developer: "Larian Studios",
     platform: "Multiplataforma",
     releaseDate: "2023-08-03",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1086940/library_600x900.jpg",
   },
   {
     name: "Red Dead Redemption 2",
@@ -55,7 +54,7 @@ const initVideoGames = [
     developer: "Rockstar Games",
     platform: "Multiplataforma",
     releaseDate: "2018-10-26",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1174180/library_600x900.jpg",
   },
   {
     name: "God of War Ragnarök",
@@ -64,7 +63,7 @@ const initVideoGames = [
     developer: "Santa Monica Studio",
     platform: "Multiplataforma",
     releaseDate: "2022-11-09",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/2322010/library_600x900.jpg",
   },
   {
     name: "Hogwarts Legacy",
@@ -73,7 +72,7 @@ const initVideoGames = [
     developer: "Avalanche Software",
     platform: "Multiplataforma",
     releaseDate: "2023-02-10",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/990080/library_600x900.jpg",
   },
   {
     name: "Resident Evil 4",
@@ -82,7 +81,7 @@ const initVideoGames = [
     developer: "Capcom",
     platform: "Multiplataforma",
     releaseDate: "2023-03-24",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/2050650/library_600x900.jpg",
   },
   {
     name: "Marvel's Spider-Man 2",
@@ -91,7 +90,7 @@ const initVideoGames = [
     developer: "Insomniac Games",
     platform: "Multiplataforma",
     releaseDate: "2023-10-20",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/2651280/library_600x900.jpg",
   },
   {
     name: "The Witcher 3: Wild Hunt",
@@ -100,7 +99,7 @@ const initVideoGames = [
     developer: "CD Projekt Red",
     platform: "Multiplataforma",
     releaseDate: "2015-05-19",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/292030/library_600x900.jpg",
   },
   {
     name: "Grand Theft Auto V",
@@ -109,7 +108,7 @@ const initVideoGames = [
     developer: "Rockstar North",
     platform: "Multiplataforma",
     releaseDate: "2013-09-17",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/271590/library_600x900.jpg",
   },
   {
     name: "Minecraft",
@@ -118,7 +117,7 @@ const initVideoGames = [
     developer: "Mojang Studios",
     platform: "Multiplataforma",
     releaseDate: "2011-11-18",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://images.igdb.com/igdb/image/upload/t_cover_big/co49x5.jpg",
   },
   {
     name: "Sekiro: Shadows Die Twice",
@@ -127,7 +126,7 @@ const initVideoGames = [
     developer: "FromSoftware",
     platform: "Multiplataforma",
     releaseDate: "2019-03-22",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/814380/library_600x900.jpg",
   },
   {
     name: "Hades",
@@ -136,7 +135,7 @@ const initVideoGames = [
     developer: "Supergiant Games",
     platform: "Multiplataforma",
     releaseDate: "2020-09-17",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1145360/library_600x900.jpg",
   },
   {
     name: "Hollow Knight",
@@ -145,7 +144,7 @@ const initVideoGames = [
     developer: "Team Cherry",
     platform: "Multiplataforma",
     releaseDate: "2017-02-24",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/367520/library_600x900.jpg",
   },
   {
     name: "Forza Horizon 5",
@@ -154,7 +153,7 @@ const initVideoGames = [
     developer: "Playground Games",
     platform: "Multiplataforma",
     releaseDate: "2021-11-09",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1551360/library_600x900.jpg",
   },
   {
     name: "Death Stranding",
@@ -163,7 +162,7 @@ const initVideoGames = [
     developer: "Kojima Productions",
     platform: "Multiplataforma",
     releaseDate: "2019-11-08",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1190460/library_600x900.jpg",
   },
   {
     name: "DOOM Eternal",
@@ -172,7 +171,7 @@ const initVideoGames = [
     developer: "id Software",
     platform: "Multiplataforma",
     releaseDate: "2020-03-20",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/782330/library_600x900.jpg",
   },
   {
     name: "It Takes Two",
@@ -181,7 +180,7 @@ const initVideoGames = [
     developer: "Hazelight Studios",
     platform: "Multiplataforma",
     releaseDate: "2021-03-26",
-    imageUrl: "URL_DE_LA_IMAGEN",
+    imageUrl: "https://cdn.akamai.steamstatic.com/steam/apps/1426210/library_600x900.jpg",
   },
 ];
 
